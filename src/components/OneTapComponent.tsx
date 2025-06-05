@@ -16,8 +16,8 @@ export default function GoogleOneTap() {
           });
 
           const user = await res.json();
-          console.log({ user });
           localStorage.setItem("user", JSON.stringify(user));
+          window.location.reload();
         },
         auto_select: true,
         cancel_on_tap_outside: false,
@@ -28,8 +28,10 @@ export default function GoogleOneTap() {
 
     if (window.google) {
       initializeOneTap();
+      console.log("Inside window.google");
     } else {
       window.addEventListener("DOMContentLoaded", initializeOneTap);
+      console.log("Inside DOMContentLoaded");
     }
   }, []);
 
